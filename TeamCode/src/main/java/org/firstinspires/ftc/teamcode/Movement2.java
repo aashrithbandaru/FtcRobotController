@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 /**
  This is an abstract class that handles 4 drive train motors.
  */
-abstract class Movement extends LinearOpMode
+abstract class Movement2 extends LinearOpMode
 {
     protected DcMotor leftFront;
     protected DcMotor rightFront;
@@ -39,8 +39,8 @@ abstract class Movement extends LinearOpMode
         intake = hardwareMap.get(DcMotor.class, "intake");
         outtake = hardwareMap.get(DcMotor.class, "outtake");
         hopper = hardwareMap.get(DcMotor.class, "hopper");
-        claw1 = hardwareMap.get(DcMotor.class, "claw1");
-        claw2 = hardwareMap.get(DcMotor.class, "claw2");
+        claw1 = hardwareMap.get(Servo.class, "claw1");
+        claw2 = hardwareMap.get(Servo.class, "claw2");
 
 
 
@@ -95,36 +95,40 @@ abstract class Movement extends LinearOpMode
 
     public void goForwardForDistance(final double power, final int distance){
         //Reset encoders
-        leftFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);s
-        rightBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        leftFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
 
         //Set target position
-        leftFront.setTargetPostion(distance);
-        rightFront.setTargetPostion(distance);
-        leftBack.setTargetPostion(distance);
-        rightBack.setTargetPostion(distance);
+        leftFront.setTargetPosition(distance);
+        rightFront.setTargetPosition(distance);
+        leftBack.setTargetPosition(distance);
+        rightBack.setTargetPosition(distance);
 
         //Set to RUN_TO_POSITION mode
-        leftFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        leftBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //Set drive power
-        goForwardForDistance(power);
+        leftFront.setPower(power);
+        rightFront.setPower(power);
+        leftBack.setPower(power);
+        rightBack.setPower(power);
+
 
         while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy()){
             //Wait until target position is reached
         }
 
         //Stop and change modes back to normal
-        stopWithSleep(duration);
-        leftFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        stop();
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
 
     }
 
@@ -135,36 +139,39 @@ abstract class Movement extends LinearOpMode
 
     public void goBackwardForDistance(final double power, final int distance){
         //Reset encoders
-        leftFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        leftFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
 
         //Set target position
-        leftFront.setTargetPostion(-distance);
-        rightFront.setTargetPostion(-distance);
-        leftBack.setTargetPostion(-distance);
-        rightBack.setTargetPostion(-distance);
+        leftFront.setTargetPosition(-distance);
+        rightFront.setTargetPosition(-distance);
+        leftBack.setTargetPosition(-distance);
+        rightBack.setTargetPosition(-distance);
 
         //Set to RUN_TO_POSITION mode
-        leftFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        leftBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //Set drive power
-        goBackwardForDistance(power);
+        leftFront.setPower(power);
+        rightFront.setPower(power);
+        leftBack.setPower(power);
+        rightBack.setPower(power);
 
         while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy()){
             //Wait until target position is reached
         }
 
         //Stop and change modes back to normal
-        stopWithSleep(duration);
-        leftFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        stop();
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
 
     }
 
@@ -181,36 +188,39 @@ abstract class Movement extends LinearOpMode
 
     public void strafeRightForDistance(final double power, final int distance){
         //Reset encoders
-        leftFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        leftFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
 
         //Set target position
-        leftFront.setTargetPostion(-distance);
-        rightFront.setTargetPostion(distance);
-        leftBack.setTargetPostion(distance);
-        rightBack.setTargetPostion(-distance);
+        leftFront.setTargetPosition(-distance);
+        rightFront.setTargetPosition(distance);
+        leftBack.setTargetPosition(distance);
+        rightBack.setTargetPosition(-distance);
 
         //Set to RUN_TO_POSITION mode
-        leftFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        leftBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //Set drive power
-        strafeRightForDistance(power);
+        leftFront.setPower(power);
+        rightFront.setPower(power);
+        leftBack.setPower(power);
+        rightBack.setPower(power);
 
         while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy()){
             //Wait until target position is reached
         }
 
         //Stop and change modes back to normal
-        stopWithSleep(duration);
-        leftFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        stop();
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
 
     }
 
@@ -226,36 +236,39 @@ abstract class Movement extends LinearOpMode
 
     public void strafeLeftForDistance(final double power, final int distance){
         //Reset encoders
-        leftFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        leftFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
 
         //Set target position
-        leftFront.setTargetPostion(distance);
-        rightFront.setTargetPostion(-distance);
-        leftBack.setTargetPostion(-distance);
-        rightBack.setTargetPostion(distance);
+        leftFront.setTargetPosition(distance);
+        rightFront.setTargetPosition(-distance);
+        leftBack.setTargetPosition(-distance);
+        rightBack.setTargetPosition(distance);
 
         //Set to RUN_TO_POSITION mode
-        leftFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        leftBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //Set drive power
-        strafeLeftForDistance(power);
+        leftFront.setPower(power);
+        rightFront.setPower(power);
+        leftBack.setPower(power);
+        rightBack.setPower(power);
 
         while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy()){
             //Wait until target position is reached
         }
 
         //Stop and change modes back to normal
-        stopWithSleep(duration);
-        leftFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        stop();
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
 
     }
 
@@ -280,36 +293,39 @@ abstract class Movement extends LinearOpMode
 
     public void turnRightForDistance(final double power, final int distance){
         //Reset encoders
-        leftFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        leftFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
 
         //Set target position
-        leftFront.setTargetPostion(distance);
-        rightFront.setTargetPostion(-distance);
-        leftBack.setTargetPostion(distance);
-        rightBack.setTargetPostion(-distance);
+        leftFront.setTargetPosition(distance);
+        rightFront.setTargetPosition(-distance);
+        leftBack.setTargetPosition(distance);
+        rightBack.setTargetPosition(-distance);
 
         //Set to RUN_TO_POSITION mode
-        leftFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        leftBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //Set drive power
-        turnRightForDistance(power);
+        leftFront.setPower(power);
+        rightFront.setPower(power);
+        leftBack.setPower(power);
+        rightBack.setPower(power);
 
         while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy()){
             //Wait until target position is reached
         }
 
         //Stop and change modes back to normal
-        stopWithSleep(duration);
-        leftFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        stop();
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
 
     }
 
@@ -325,36 +341,39 @@ abstract class Movement extends LinearOpMode
 
     public void turnLeftForDistance(final double power, final int distance){
         //Reset encoders
-        leftFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        leftFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RESET_ENCODERS);
 
         //Set target position
-        leftFront.setTargetPostion(-distance);
-        rightFront.setTargetPostion(distance);
-        leftBack.setTargetPostion(-distance);
-        rightBack.setTargetPostion(distance);
+        leftFront.setTargetPosition(-distance);
+        rightFront.setTargetPosition(distance);
+        leftBack.setTargetPosition(-distance);
+        rightBack.setTargetPosition(distance);
 
         //Set to RUN_TO_POSITION mode
-        leftFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightFront.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        leftBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
-        rightBack.setMode(DcMotorController.RunMode.RUN_TO_POSTION);
+        leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //Set drive power
-        turnLeftForDistance(power);
+        leftFront.setPower(power);
+        rightFront.setPower(power);
+        leftBack.setPower(power);
+        rightBack.setPower(power);
 
         while(leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy()){
             //Wait until target position is reached
         }
 
         //Stop and change modes back to normal
-        stopWithSleep(duration);
-        leftFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightFront.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        leftBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        rightBack.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        stop();
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODERS);
 
     }
 
@@ -380,7 +399,7 @@ abstract class Movement extends LinearOpMode
 
     public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
         claw1.setPosition(claw1position);
-        claw2.setPostion(claw2position);
+        claw2.setPosition(claw2position);
         sleep(duration);
     }
 
