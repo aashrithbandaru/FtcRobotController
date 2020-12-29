@@ -15,10 +15,18 @@ public class servotesting extends ServoClass {
             runtime.reset();
 
 
-/*            while(opModeIsActive()) {
+            while(opModeIsActive()) {
                 while(true) {
 
-                    if(gamepad1.a) {
+                    if(gamepad2.right_bumper) {
+                        wobblerpickup(0.5, 0.5);
+                    }
+
+                    if(gamepad2.left_bumper) {
+                        wobblerpickup(1, 0);
+                    }
+
+/*                    if(gamepad1.a) {
                         arm.setPosition(0.4);
                         sleep(200);
                     }
