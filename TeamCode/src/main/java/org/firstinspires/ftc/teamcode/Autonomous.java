@@ -14,6 +14,28 @@ public class Autonomous extends Movement2 {
 
         waitForStart();
         runtime.reset();
+
+
+        strafeRightForDistance( , );
+        stop( );
+        wobblerpickup(0.5, 0.5);
+        stop( );
+        armUp(0.7);
+        stop( );
+        //detect stack of rings
+        goForwardForDistance( , );
+        intake(0.75);
+        hopper(0.75);
+        outtake(1);
+        stop( );
+        goForwardForDistance( , );
+        stop( );
+        armDown(0.7);
+        wobblerpickup(1, 0);
+        stop ( );
+
+
+
 /*
         sleep(50);
 
