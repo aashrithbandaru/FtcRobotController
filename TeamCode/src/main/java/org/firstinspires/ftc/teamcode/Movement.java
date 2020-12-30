@@ -378,10 +378,9 @@ abstract class Movement extends LinearOpMode
         sleep(duration);
     }*/
 
-    public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
+    public void wobblerpickup(final double claw1position, final double claw2position) {
         claw1.setPosition(claw1position);
         claw2.setPostion(claw2position);
-        sleep(duration);
     }
 
 /*
