@@ -17,6 +17,7 @@ abstract class Movement2 extends LinearOpMode
     protected DcMotor intake;
     protected DcMotor outtake;
     protected DcMotor hopper;
+    protected DcMotor wobbler;
     protected Servo claw1;
     protected Servo claw2;
 
@@ -39,6 +40,7 @@ abstract class Movement2 extends LinearOpMode
         intake = hardwareMap.get(DcMotor.class, "intake");
         outtake = hardwareMap.get(DcMotor.class, "outtake");
         hopper = hardwareMap.get(DcMotor.class, "hopper");
+        wobbler = hardwareMap.get(DcMotor.class, "wobbler");
         claw1 = hardwareMap.get(Servo.class, "claw1");
         claw2 = hardwareMap.get(Servo.class, "claw2");
 
@@ -53,6 +55,7 @@ abstract class Movement2 extends LinearOpMode
         intake.setDirection(DcMotor.Direction.FORWARD);
         hopper.setDirection(DcMotor.Direction.FORWARD);
         outtake.setDirection(DcMotor.Direction.FORWARD);
+        wobbler.setDirection(DcMotor.Direction.FORWARD);
 
         updateTelemetryMessage("Initialized Motors");
 /*
@@ -377,9 +380,8 @@ abstract class Movement2 extends LinearOpMode
 
     }
 
-    public void intake(final double intakepower, final int duration){
+    public void intake(final double intakepower){
         intake.setPower(intakepower);
-        sleep(duration);
     }
 
     public void hopper(final double hopperpower, final int duration){

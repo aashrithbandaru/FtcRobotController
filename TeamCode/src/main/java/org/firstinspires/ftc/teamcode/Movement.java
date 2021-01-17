@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+/*package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 /**
  This is an abstract class that handles 4 drive train motors.
  */
-abstract class Movement extends LinearOpMode
+/*abstract class Movement extends LinearOpMode
 {
     protected DcMotor leftFront;
     protected DcMotor rightFront;
@@ -63,8 +63,8 @@ abstract class Movement extends LinearOpMode
         rightConstruction = hardwareMap.servo.get("rightConstruction");
 
  */
-    }
-
+    /*}
+/*
     public void stop(final String message) {
         leftFront.setPower(0.0);
         rightFront.setPower(0.0);
@@ -377,7 +377,7 @@ abstract class Movement extends LinearOpMode
         claw2.setPosition(claw2position);
         sleep(duration);
     }*/
-
+/*
     public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
         claw1.setPosition(claw1position);
         claw2.setPostion(claw2position);
@@ -415,4 +415,3 @@ abstract class Movement extends LinearOpMode
         updateTelemetryMessage("Foundation Servos Up");
     }
 */
-}

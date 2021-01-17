@@ -56,22 +56,20 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
         telemetry.update();
     }
 
-/*    public void claw1(final double claw1position, final int duration) {
+    public void claw1move(final double claw1position) {
         claw1.setPosition(claw1position);
-        sleep(duration);
     }
 
-    public void claw2(final double claw2position, final int duration) {
+    public void claw2move(final double claw2position) {
         claw1.setPosition(claw2position);
+    }
+
+ /*   public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
+        claw1.setPosition(claw1position);
+        claw2.setPosition(claw2position);
         sleep(duration);
     }
 */
-    public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
-        claw1.setPosition(claw1position);
-        claw2.setPostion(claw2position);
-        sleep(duration);
-    }
-
 /*    public void armdown() {
         arm.setPosition(1);
         sleep(200);
