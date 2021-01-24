@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="DriverControl", group="Linear Opmode")
-public class DriverControl extends Movement2 {
+public class DriverControl extends Movement {
     private ElapsedTime runtime = new ElapsedTime();
 
 
@@ -18,9 +18,10 @@ public class DriverControl extends Movement2 {
 
         while(opModeIsActive()) {
             while(true) {
-                // Gamepad 2 controls:s
+                // Gamepad 2 controls:
 
                 if (gamepad2.a) {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     while(gamepad2.a) {
                         intake.setPower(-1);
@@ -108,11 +109,38 @@ public class DriverControl extends Movement2 {
                 if (gamepad2.x) {
                     while(gamepad2.x) {
                         outtake.setPower(-1);
-                    }
+=======
+                    intake.setPower(1);
                 }
-                else {
+
+                if (gamepad2.b) {
+                    intake.setPower(0);
+                }
+
+
+                if (gamepad2.x) {
+                    hopper.setPower(0.75);
+                }
+
+             
+                if (gamepad2.b)
+                    while (gamepad2.b) {
+                        outtake.setPower(1);
+>>>>>>> parent of 87d973d... 12/28/2020
+                    }
+                else{
                     outtake.setPower(0);
                 }
+
+                if (gamepad2.y)
+                    while (gamepad2.y) {
+                        hopper.setPower(1);
+                    }
+                else{
+
+                    hopper.setPower(0);
+                }
+
 
                 // Left trigger - to move left sideways
                 strafeRight(-gamepad1.right_trigger, 0);
@@ -169,7 +197,7 @@ public class DriverControl extends Movement2 {
                 if (gamepad2.y) {
                     leftConstruction.setPosition(1);
                     rightConstruction. setPosition(1);
-                   telemetry.addData("back servos up", "servoposition: 0.95" );
+                    telemetry.addData("back servos up", "servoposition: 0.95" );
                 }
 
                 telemetry.addData("Status", "Run Time: " + runtime.toString());

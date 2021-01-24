@@ -56,18 +56,25 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
         telemetry.update();
     }
 
-    public void claw1move(final double claw1position) {
+/*    public void claw1(final double claw1position, final int duration) {
         claw1.setPosition(claw1position);
+        sleep(duration);
     }
 
-    public void claw2move(final double claw2position) {
+    public void claw2(final double claw2position, final int duration) {
         claw1.setPosition(claw2position);
+        sleep(duration);
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
  /*   public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
+=======
+*/
+    public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
+>>>>>>> parent of 87d973d... 12/28/2020
         claw1.setPosition(claw1position);
-        claw2.setPosition(claw2position);
+        claw2.setPostion(claw2position);
         sleep(duration);
 =======
 */
@@ -76,7 +83,7 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
         claw2.setPostion(claw2position);
 
     }
-*/
+
 /*    public void armdown() {
         arm.setPosition(1);
         sleep(200);

@@ -14,6 +14,7 @@ public class Autonomous extends Movement2 {
 
         waitForStart();
         runtime.reset();
+<<<<<<< HEAD
 
 
         strafeRightForDistance( , );
@@ -36,6 +37,8 @@ public class Autonomous extends Movement2 {
 
 
 
+=======
+>>>>>>> parent of 87d973d... 12/28/2020
 /*
         sleep(50);
 

@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="servotesting", group="Linear Opmode")
 public class servotesting extends ServoClass {
@@ -19,15 +18,12 @@ public class servotesting extends ServoClass {
             while(opModeIsActive()) {
                 while(true) {
 
-                    while(gamepad2.right_bumper) {
-                        claw1move(0.5);
-                        claw2move(0.5);
-
+                    if(gamepad2.right_bumper) {
+                        wobblerpickup(0.5, 0.5);
                     }
 
-                    while(gamepad2.left_bumper) {
-                        claw1move(0);
-                        claw2move(1);
+                    if(gamepad2.left_bumper) {
+                        wobblerpickup(1, 0);
                     }
 
 /*                    if(gamepad1.a) {
@@ -72,7 +68,6 @@ public class servotesting extends ServoClass {
 */
                     telemetry.addData("Status", "Run Time: " + runtime.toString());
                     telemetry.update();
-                    stop();
                 }
             }
 

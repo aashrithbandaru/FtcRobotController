@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="DriverControltest", group="Linear Opmode")
-public class DriverControltest extends Movement2 {
+public class DriverControltest extends Movement {
     private ElapsedTime runtime = new ElapsedTime();
 
 
