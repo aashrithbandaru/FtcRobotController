@@ -22,7 +22,7 @@ public class DriverControl extends Movement2 {
 
                 if (gamepad2.a) {
                     while(gamepad2.a) {
-                        intake(-0.1);
+                        intake.setPower(-1);
                     }
                 }
 
@@ -41,7 +41,7 @@ public class DriverControl extends Movement2 {
 
                 if (gamepad2.x) {
                     while(gamepad2.x) {
-                        outtake.setPower(1);
+                        outtake.setPower(-1);
                     }
                 }
                 else {
