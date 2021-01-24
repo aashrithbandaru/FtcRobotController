@@ -21,22 +21,88 @@ public class DriverControl extends Movement2 {
                 // Gamepad 2 controls:s
 
                 if (gamepad2.a) {
+<<<<<<< HEAD
                     while(gamepad2.a) {
                         intake.setPower(-1);
                     }
                 }
 
+=======
+                    while (gamepad2.a) {
+                        intake.setPower(1);
+                    }
+                }
+>>>>>>> 03dc381496e191d132eacf8759015f78a2b73b86
                 else {
                     intake.setPower(0);
                 }
 
+<<<<<<< HEAD
                 if (gamepad2.b) {
                     while(gamepad2.b) {
+=======
+/*                if (gamepad2.b) {
+                    intake.setPo
+                    wer(0);
+ */
+                }
+*/
+
+/*                if (gamepad2.x) {
+                    hopper.setPower(0.75);
+                }
+*/
+
+                if (gamepad2.x) {
+                    while (gamepad2.x) {
+                        hopper.setPower(0.75);
+                    }
+                }
+                else {
+                    hopper.setPower(0);
+                }
+
+/*                if (gamepad2.b)
+                    while (gamepad2.b) {
+                        outtake.setPower(1);
+                    }
+                else{
+                    outtake.setPower(0);
+                }
+*/
+                if (gamepad2.right_trigger) {
+                    while (gamepad2.right_trigger) {
+                        outtake.setPower(1);
+                    }
+                }
+                else {
+                    outtake.setPower(0);
+                }
+
+/*                if (gamepad2.y)
+                    while (gamepad2.y) {
+>>>>>>> 03dc381496e191d132eacf8759015f78a2b73b86
                         hopper.setPower(1);
                     }
                 }
                 else {
                     hopper.setPower(0);
+                }
+*/
+                if(gamepad2.right_bumper) {
+                    wobblerpickup(0.5, 0.5);
+                }
+
+                if(gamepad2.left_bumper) {
+                    wobblerpickup(1, 0);
+                }
+
+                if(gamepad2.y) {
+                    armUp(0.7);
+                }
+
+                if(gamepad2.left_trigger) {
+                    armDown(0.7);
                 }
 
                 if (gamepad2.x) {
@@ -73,22 +139,23 @@ public class DriverControl extends Movement2 {
 
                 // left bumper - to close claw (front servo)
 
-/*
-                // Gamepad 2 Controls
+
+/*                // Gamepad 2 Controls
 
                 // Left stick y - to move arm up or down
-                arm.setPower(-gamepad2.left_stick_y*0.66);
 
 
 
                 // a - arm target position
 
-//                if (gamepad2.a) {
-                //                  arm.setTargetPosition(1);
-                //                arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-                //              arm.setPower(0);
-                //            sleep(100);
-                //      }
+                if (gamepad2.a) {
+                    arm.setTargetPosition(1);
+                    arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                    arm.setPower(0);
+                    sleep(100);
+                }
+                arm.setPower(-gamepad2.left_stick_y*0.66);
+
 
                 // x - to move back servo down
                 if (gamepad2.x) {
@@ -97,14 +164,14 @@ public class DriverControl extends Movement2 {
                     rightConstruction.setPosition(0.43);
                     telemetry.addData("back servos down", "servoposition: 0,0" );
                 }
-q
+
                 // y - to move back servo up
                 if (gamepad2.y) {
                     leftConstruction.setPosition(1);
                     rightConstruction. setPosition(1);
                    telemetry.addData("back servos up", "servoposition: 0.95" );
                 }
-*/
+
                 telemetry.addData("Status", "Run Time: " + runtime.toString());
                 telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
                 telemetry.update();

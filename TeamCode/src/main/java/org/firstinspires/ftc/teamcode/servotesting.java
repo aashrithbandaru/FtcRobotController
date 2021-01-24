@@ -69,7 +69,6 @@ public class servotesting extends ServoClass {
                         clamp.setPosition(0.25);
                         sleep(200);
                     }
-
 */
                     telemetry.addData("Status", "Run Time: " + runtime.toString());
                     telemetry.update();

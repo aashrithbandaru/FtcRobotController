@@ -63,11 +63,18 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
     public void claw2move(final double claw2position) {
         claw1.setPosition(claw2position);
     }
+<<<<<<< HEAD
 
  /*   public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
         claw1.setPosition(claw1position);
         claw2.setPosition(claw2position);
         sleep(duration);
+=======
+*/
+    public void wobblerpickup(final double claw1position, final double claw2position) {
+        claw1.setPosition(claw1position);
+        claw2.setPostion(claw2position);
+>>>>>>> 03dc381496e191d132eacf8759015f78a2b73b86
     }
 */
 /*    public void armdown() {

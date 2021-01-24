@@ -17,7 +17,11 @@ abstract class Movement2 extends LinearOpMode
     protected DcMotor intake;
     protected DcMotor outtake;
     protected DcMotor hopper;
+<<<<<<< HEAD
     protected DcMotor wobbler;
+=======
+    protected DcMotor arm;
+>>>>>>> 03dc381496e191d132eacf8759015f78a2b73b86
     protected Servo claw1;
     protected Servo claw2;
 
@@ -399,29 +403,31 @@ abstract class Movement2 extends LinearOpMode
         sleep(duration);
     }*/
 
-    public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
+    public void wobblerpickup(final double claw1position, final double claw2position) {
         claw1.setPosition(claw1position);
         claw2.setPosition(claw2position);
-        sleep(duration);
     }
 
-/*
-    public void armUp(final double armpower, final int duration) {
-        arm.setPower(armpower);
-        sleep(duration);
+
+    public void armUp(final double armposition) {
+        arm.setPosition(armposition);
 
         updateTelemetryMessage("Arm going up");
     }
 
-    public void armDown(final double armpower, final int duration) {
-        armUp(-armpower, duration);
+    public void armDown(final double armposition, final int duration) {
+        armUp(-armposition, duration);
+    }
+
+    public void outtake(final double outtakepower, final int duration) {
+        outtake.setPower(outtakepower);
+        sleep(duration);
     }
 
 
 
 
-
-
+/*
     public void backServosDown() {
         rightConstruction.setPosition(0.43);
         leftConstruction.setPosition(0.35);

@@ -377,11 +377,15 @@ import com.qualcomm.robotcore.hardware.Servo;
         claw2.setPosition(claw2position);
         sleep(duration);
     }*/
+<<<<<<< HEAD
 /*
     public void wobblerpickup(final double claw1position, final double claw2position, final int duration) {
+=======
+
+    public void wobblerpickup(final double claw1position, final double claw2position) {
+>>>>>>> 03dc381496e191d132eacf8759015f78a2b73b86
         claw1.setPosition(claw1position);
         claw2.setPostion(claw2position);
-        sleep(duration);
     }
 
 /*
