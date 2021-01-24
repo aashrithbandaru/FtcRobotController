@@ -5,9 +5,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
-/**
+ /**
  This is an abstract class that handles 4 drive train motors.
  */
+
 abstract class IntakeClass extends LinearOpMode
 {
 
@@ -31,12 +32,10 @@ abstract class IntakeClass extends LinearOpMode
         hopper = hardwareMap.get(DcMotor.class, "hopper");
         outtake = hardwareMap.get(DcMotor.class, "outtake");
 
-
         // Most robots need the motor on one side to be reve`rsed to drive goBackward
         // Reverse the motor that runs backwards when connected directly to the battery
 
         intake.setDirection(DcMotor.Direction.FORWARD);
-
 
         /*    */
 

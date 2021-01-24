@@ -74,7 +74,7 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
     public void wobblerpickup(final double claw1position, final double claw2position) {
         claw1.setPosition(claw1position);
         claw2.setPostion(claw2position);
->>>>>>> 03dc381496e191d132eacf8759015f78a2b73b86
+
     }
 */
 /*    public void armdown() {
